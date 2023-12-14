@@ -50,7 +50,7 @@ class NotesHandler {
 
   getNoteByIdHandler(req, h) {
     try {
-      const id = req.params
+      const { id } = req.params
   
       const note = this._service.getNoteById(id)
   
@@ -66,7 +66,7 @@ class NotesHandler {
     } catch (error) {
       const response = h.response({
         status: "fail",
-        message: "id not found",
+        message: error.message,
       })
       response.code(400)
   
